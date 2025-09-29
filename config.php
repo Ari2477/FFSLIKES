@@ -1,5 +1,4 @@
 <?php
-
 $host = "localhost";
 $username = "xqpxzunj_ffs";
 $password = "C&Z%P4*C2F}1";
@@ -9,10 +8,10 @@ $useragent = "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, lik
 $connection = mysqli_connect($host, $username, $password, $dbname);
 
 if (!$connection) {
-    die('Could not connect: ' . mysqli_connect_error());
+    die("Connection failed: " . mysqli_connect_error());
 }
 
-mysqli_select_db($connection, $dbname) or die(mysqli_error($connection));
-
-mysqli_query($connection, "SET NAMES utf8") or die(mysqli_error($connection));
+if (!mysqli_set_charset($connection, "utf8")) {
+    die("Error loading character set utf8: " . mysqli_error($connection));
+}
 ?>
