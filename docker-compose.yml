@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   app:
     build: .
@@ -11,11 +13,12 @@ services:
     networks:
       default:
         aliases:
-          - localhost  
+          - localhost   
 
   db:
     image: mysql:5.7
     container_name: ffslikes_db
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: xqpxzunj_bl
@@ -23,6 +26,29 @@ services:
       MYSQL_PASSWORD: 'C&Z%P4*C2F}1'
     ports:
       - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      default:
+        aliases:
+          - localhost   
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: ffslikes_pma
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: root
+    depends_on:
+      - db
+    networks:
+      - default
+
+volumes:
+  db_data:
 
 networks:
   default:
