@@ -50,6 +50,7 @@ function displaySweetAlert($icon, $title, $message) {
     <link rel="shortcut icon" href="img/favicon.png">
     <link rel="stylesheet" href="css/zd05sd6muzauqwks.css">
     <link rel="stylesheet" href="css/8w11dsm7q69dq8wa.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="body">
 <div class="wrapper wrapper-navbar">
