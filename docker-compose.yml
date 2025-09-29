@@ -1,0 +1,29 @@
+services:
+  app:
+    build: .
+    container_name: ffslikes_app
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+    networks:
+      default:
+        aliases:
+          - localhost  
+
+  db:
+    image: mysql:5.7
+    container_name: ffslikes_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: xqpxzunj_bl
+      MYSQL_USER: xqpxzunj_ffs
+      MYSQL_PASSWORD: 'C&Z%P4*C2F}1'
+    ports:
+      - "3306:3306"
+
+networks:
+  default:
+    name: ffslikes_network
